@@ -1,8 +1,6 @@
 package com.github.decyg;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
-import sx.blah.discord.handle.obj.IChannel;
-import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.RequestBuffer;
 
@@ -14,7 +12,7 @@ import java.util.*;
 public class CommandHandler {
 
     // A static map of commands mapping from command string to the functional impl
-    private static Map<String, Command> commandMap = new HashMap<>();
+    private static Map<String, ICommand> commandMap = new HashMap<>();
 
     // Statically populate the commandMap with the intended functionality
     // Might be better practise to do this from an instantiated objects constructor
@@ -51,7 +49,7 @@ public class CommandHandler {
             RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
 
         });
-
+    commandMap.put("createevent", new CreateEventCommand());
     }
 
     @EventSubscriber
@@ -74,7 +72,7 @@ public class CommandHandler {
             return;
 
         // Extract the "command" part of the first arg out by ditching the amount of characters present in the prefix
-        String commandStr = argArray[0].substring(BotUtils.BOT_PREFIX.length());
+        String commandStr = argArray[0].substring(BotUtils.BOT_PREFIX.length()).toLowerCase();
 
         // Load the rest of the args in the array into a List for safer access
         List<String> argsList = new ArrayList<>(Arrays.asList(argArray));
