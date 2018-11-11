@@ -1,20 +1,21 @@
 plugins {
-    id 'java'
+  id 'java'
 }
 
-group 'Discalendar'
-version '2.10.1'
-
-sourceCompatibility = 1.8
-
 repositories {
-    mavenCentral()
-    jcenter()
+  mavenCentral()
+  jcenter()
 }
 
 dependencies {
-    //compile "com.discord4j:Discord4J:2.10.1"
-    // https://mvnrepository.com/artifact/com.discord4j/Discord4J
-    compile group: 'com.discord4j', name: 'Discord4J', version: '2.10.1'
-    compile group: 'com.sedmelluq', name: 'lavaplayer', version: '1.2.42'
+  compile group: 'com.discord4j', name: 'Discord4J', version: '2.10.1'
+	compile group: 'com.sedmelluq', name: 'lavaplayer', version: '1.2.42'
+}
+
+task execute(type:JavaExec) {
+  if (project.hasProperty("cargs")) {
+    args Eval.me(cargs)
+  }
+  main = "com.github.decyg.MainRunner"
+  classpath = sourceSets.main.runtimeClasspath
 }
