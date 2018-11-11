@@ -9,7 +9,6 @@ repositories {
 
 dependencies {
   compile group: 'com.discord4j', name: 'Discord4J', version: '2.10.1'
-	compile group: 'com.sedmelluq', name: 'lavaplayer', version: '1.2.42'
 }
 
 task execute(type:JavaExec) {
