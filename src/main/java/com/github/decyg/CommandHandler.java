@@ -49,14 +49,15 @@ public class CommandHandler {
             RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
 
         });
-    commandMap.put("createevent", new CreateEventCommand());
+        commandMap.put("createevent", new CreateEventCommand());
+        commandMap.put("listevents", new ListEventsCommand());
     }
 
     @EventSubscriber
     public void onMessageReceived(MessageReceivedEvent event) {
 
         // Note for error handling, you'll probably want to log failed commands with a logger or sout
-        // In most cases it's not advised to annoy the user with a reply incase they didn't intend to trigger a
+        // In most cases it's not advised to annoy the user with a reply in case they didn't intend to trigger a
         // command anyway, such as a user typing ?notacommand, the bot should not say "notacommand" doesn't exist in
         // most situations. It's partially good practice and partially developer preference
 

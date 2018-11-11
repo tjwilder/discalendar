@@ -7,6 +7,8 @@ import sx.blah.discord.api.IDiscordClient;
  */
 public class MainRunner {
 
+    public static IDiscordClient client;
+
     public static void main(String[] args){
 
         if(args.length != 1){
@@ -15,6 +17,7 @@ public class MainRunner {
         }
 
         IDiscordClient cli = BotUtils.getBuiltDiscordClient(args[0]);
+        client = cli;
 
         // Register a listener via the EventSubscriber annotation which allows for organisation and delegation of events
         cli.getDispatcher().registerListener(new CommandHandler());
