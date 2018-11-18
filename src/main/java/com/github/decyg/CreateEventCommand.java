@@ -8,7 +8,14 @@ import java.util.List;
 
 public class CreateEventCommand implements ICommand {
     public void runCommand(MessageReceivedEvent event, List<String> args) {
-        EmbedBuilder builder = new EmbedBuilder();
+        // TODO: Parse arguments for title, description, time.
+
+        // TODO: If parse is correct, save into an event. Print confirmation to channel
+
+        // TODO: If parse is incorrect, print indication of correct message format
+
+
+        /*EmbedBuilder builder = new EmbedBuilder();
 
         builder.appendField("fieldTitleInline", "fieldContentInline", true);
         builder.appendField("fieldTitleInline2", "fieldContentInline2", true);
@@ -35,7 +42,7 @@ public class CreateEventCommand implements ICommand {
         builder.appendDesc(" + appendDesc");
         builder.appendDescription(" + appendDescription");
 
-        RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
+        RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));*/
 
     }
 }
