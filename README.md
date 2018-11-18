@@ -10,3 +10,7 @@ Install the bot in your channel and use these commands:
 It's built using gradle, so make sure you have that installed. You'll need to create your own Discord bot which you can do through the Discord website. Once you have that key, you can run the following command to run the code for that bot:
 
 `gradle execute -Pcargs="['MY_BOT_KEY_HERE']"`
+
+To run it a lot, you should do:
+`cp exec-example exec`
+And fill in the code there. Then you can just run `./exec`

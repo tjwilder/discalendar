@@ -1,0 +1,1 @@
+gradle execute -Pcargs="['ENTER_DISCORD_KEY_HERE']"

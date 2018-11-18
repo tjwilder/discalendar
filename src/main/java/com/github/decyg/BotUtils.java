@@ -15,7 +15,7 @@ class BotUtils {
     static String BOT_PREFIX = "/";
 
     // Handles the creation and getting of a IDiscordClient object for a token
-    static IDiscordClient getBuiltDiscordClient(String token){
+    protected static IDiscordClient getBuiltDiscordClient(String token){
 
         // The ClientBuilder object is where you will attach your params for configuring the instance of your bot.
         // Such as withToken, setDaemon etc
@@ -27,7 +27,7 @@ class BotUtils {
     }
 
     // Helper functions to make certain aspects of the bot easier to use.
-    static void sendMessage(IChannel channel, String message){
+    protected static void sendMessage(IChannel channel, String message){
 
         // This might look weird but it'll be explained in another page.
         RequestBuffer.request(() -> {
@@ -39,5 +39,10 @@ class BotUtils {
             }
         });
 
+    }
+
+    protected static void log(String message) {
+        IChannel channel = MainRunner.client.getChannelByID(392512963916857347L);
+        sendMessage(channel, message);
     }
 }

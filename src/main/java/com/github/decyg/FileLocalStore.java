@@ -3,22 +3,41 @@ package com.github.decyg;
 import sx.blah.discord.handle.obj.IChannel;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 public class FileLocalStore implements IDataStore {
-    private String fileName = "data.txt";
+    private static final String FILE_NAME = "data/data.json";
+    private static final String SECONDARY_FILE_NAME = "data/backup_data.json";
+
+    @SuppressWarnings("unchecked")
     public void saveData(ArrayList<Event> eventList) {
-        try {
-            PrintWriter pw = new PrintWriter(new File(fileName));
-            for (Event saveEvent : eventList) {
-                pw.println(saveEvent.getTitle() + "" + saveEvent.getDescription() + saveEvent.getTime());
+        try (FileWriter file = new FileWriter(FILE_NAME)) {
+            JSONObject obj = new JSONObject();
+            JSONObject eventObj;
+
+            JSONArray data = new JSONArray();
+            for (Event event : eventList) {
+                eventObj = new JSONObject();
+                eventObj.put("title", event.getTitle());
+                eventObj.put("description", event.getDescription());
+                eventObj.put("timestamp", event.getTime());
+                data.add(eventObj);
             }
+
+            obj.put("data", data);
+
+      			file.write(obj.toJSONString());
+      			System.out.println("Saved events");
         }
-        catch (FileNotFoundException e) {
-            IChannel channel = MainRunner.client.getChannelByID(392512963916857347L);
-            BotUtils.sendMessage(channel, "ERROR: Discalendar failed to save calendar data to cloud storage");
+        catch (IOException e) {
+            BotUtils.log("ERROR: Discalendar failed to save calendar data to local storage with Exception\n"
+                + e.getMessage());
         }
     }
 
