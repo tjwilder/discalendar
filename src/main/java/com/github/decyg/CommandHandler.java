@@ -51,6 +51,8 @@ public class CommandHandler {
         });
         commandMap.put("createevent", new CreateEventCommand());
         commandMap.put("listevents", new ListEventsCommand());
+        commandMap.put("deleteevent", new DeleteEventCommand());
+        commandMap.put("help", new HelpCommand());
     }
 
     @EventSubscriber
