@@ -12,4 +12,8 @@ public class Event {
     public String getTitle() { return TITLE; }
     public String getDescription() { return DESCRIPTION; }
     public String getTime() { return TIME; }
+
+	public String toString() {
+		return String.format("(%s, %s, %s)", TITLE, DESCRIPTION, TIME);
+	}
 }

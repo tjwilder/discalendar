@@ -3,6 +3,7 @@ package com.github.decyg;
 import sx.blah.discord.handle.obj.IChannel;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class FileLocalStore implements IDataStore {
     private static final String FILE_NAME = "data/data.json";
@@ -30,10 +33,10 @@ public class FileLocalStore implements IDataStore {
                 data.add(eventObj);
             }
 
-            obj.put("data", data);
+            obj.put("events", data);
 
-      			file.write(obj.toJSONString());
-      			System.out.println("Saved events");
+			file.write(obj.toJSONString());
+			System.out.println("Saved events");
         }
         catch (IOException e) {
             BotUtils.log("ERROR: Discalendar failed to save calendar data to local storage with Exception\n"
@@ -42,6 +45,33 @@ public class FileLocalStore implements IDataStore {
     }
 
     public ArrayList<Event> loadData() {
-        return null;
+		ArrayList<Event> events = new ArrayList<Event>();
+
+        JSONParser parser = new JSONParser();
+
+		try {
+			JSONObject data = (JSONObject) parser.parse(new FileReader(FILE_NAME));
+
+			JSONArray eventData = (JSONArray) data.get("events");
+
+			for (Object ev : eventData) {
+				JSONObject e = (JSONObject) ev;
+
+				String name = (String) e.get("title");
+				String description = (String) e.get("description");
+				String timestamp = (String) e.get("timestamp");
+
+				Event event = new Event(name, description, timestamp);
+				events.add(event);
+			}
+		} catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return events;
     }
 }

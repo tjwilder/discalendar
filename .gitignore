@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# Gradle build files
+.gradle/*
+
 # Log file
 *.log
 
@@ -24,3 +27,7 @@ hs_err_pid*
 
 # File with private discord API key
 exec
+
+# Data
+data/*
+!data/.keep
