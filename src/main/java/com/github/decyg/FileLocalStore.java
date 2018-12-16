@@ -7,6 +7,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -20,6 +23,11 @@ public class FileLocalStore implements IDataStore {
 
     @SuppressWarnings("unchecked")
     public void saveData(ArrayList<Event> eventList) {
+		if (!backupData()) {
+			BotUtils.log("Data backup failed, aborting saveData");
+			return;
+		}
+
         try (FileWriter file = new FileWriter(FILE_NAME)) {
             JSONObject obj = new JSONObject();
             JSONObject eventObj;
@@ -44,6 +52,19 @@ public class FileLocalStore implements IDataStore {
             BotUtils.log(errorLog, e);
         }
     }
+
+	private boolean backupData() {
+		try {
+			Path source = Paths.get(FILE_NAME);
+			Path newDir = Paths.get(SECONDARY_FILE_NAME);
+			Files.move(source, newDir);// Replace existing backup
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
     public ArrayList<Event> loadData() {
 		ArrayList<Event> events = new ArrayList<Event>();
