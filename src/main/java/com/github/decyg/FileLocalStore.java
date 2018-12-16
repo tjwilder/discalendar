@@ -32,16 +32,17 @@ public class FileLocalStore implements IDataStore {
 
             obj.put("data", data);
 
-      			file.write(obj.toJSONString());
-      			System.out.println("Saved events");
+            file.write(obj.toJSONString());
+            System.out.println("Saved events");
         }
         catch (IOException e) {
-            BotUtils.log("ERROR: Discalendar failed to save calendar data to local storage with Exception\n"
-                + e.getMessage());
+            String errorLog = "";
+            errorLog += "ERROR: Discalendar failed to save calendar data to local storage with Exception\n";
+            BotUtils.log(errorLog, e);
         }
     }
 
     public ArrayList<Event> loadData() {
-        return null;
+        return null; // TODO: load the data
     }
 }
