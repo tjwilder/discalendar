@@ -41,8 +41,21 @@ class BotUtils {
 
     }
 
+    protected static void log(String message, Exception e) {
+        message += e.getMessage() + "\nStack trace:";
+        for (StackTraceElement stackPiece : e.getStackTrace()) {
+            message += "\n" + stackPiece.toString();
+        }
+        log(message);
+    }
+
     protected static void log(String message) {
-        IChannel channel = MainRunner.client.getChannelByID(392512963916857347L);
-        sendMessage(channel, message);
+        if (!MainRunner.DEBUG) {
+            IChannel channel = MainRunner.client.getChannelByID(392512963916857347L);
+            sendMessage(channel, message);
+        }
+        else {
+            System.err.println(message);
+        }
     }
 }

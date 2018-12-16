@@ -39,8 +39,9 @@ public class FileLocalStore implements IDataStore {
 			System.out.println("Saved events");
         }
         catch (IOException e) {
-            BotUtils.log("ERROR: Discalendar failed to save calendar data to local storage with Exception\n"
-                + e.getMessage());
+            String errorLog = "";
+            errorLog += "ERROR: Discalendar failed to save calendar data to local storage with Exception\n";
+            BotUtils.log(errorLog, e);
         }
     }
 
