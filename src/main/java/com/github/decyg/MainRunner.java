@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class MainRunner {
 
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
     public static IDiscordClient client;
 
@@ -17,14 +17,16 @@ public class MainRunner {
 
         if (DEBUG == false) {
             if (args.length != 1) {
-                System.out.println("Please enter the bots token as the first argument e.g java -jar thisjar.jar tokenhere");
+                System.out.println("Please enter the bots token as the first argument" +
+                        "e.g java -jar thisjar.jar tokenhere");
                 return;
             }
 
             IDiscordClient cli = BotUtils.getBuiltDiscordClient(args[0]);
             client = cli;
 
-            // Register a listener via the EventSubscriber annotation which allows for organisation and delegation of events
+            // Register a listener via the EventSubscriber annotation which
+            // allows for organisation and delegation of events
             cli.getDispatcher().registerListener(new CommandHandler());
 
             // Only login after all events are registered otherwise some may be missed.
@@ -35,7 +37,7 @@ public class MainRunner {
             String debugTitle = "basicTitle";
             String debugDesscription = "extra Long Description";
             String debugTime = "8767896";
-            Event testEvent = new Event(debugTitle,debugDesscription,debugTime);
+            Event testEvent = new Event(debugTitle, debugDesscription, debugTime);
             if (!testEvent.getTitle().equals(debugTitle))
                 System.err.println("Title is not saved and loaded properly by Event");
             if (!testEvent.getDescription().equals(debugDesscription))

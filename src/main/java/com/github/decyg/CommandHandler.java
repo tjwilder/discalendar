@@ -71,18 +71,23 @@ public class CommandHandler {
             return;
 
         // Check if the first arg (the command) starts with the prefix defined in the utils class
-        if(!argArray[0].startsWith(BotUtils.BOT_PREFIX))
+        if(!argArray[0].startsWith(BotUtils.botPrefix))
             return;
 
         // Extract the "command" part of the first arg out by ditching the amount of characters present in the prefix
-        String commandStr = argArray[0].substring(BotUtils.BOT_PREFIX.length()).toLowerCase();
+        String commandStr = argArray[0].substring(BotUtils.botPrefix.length()).toLowerCase();
+
+        // Add spaces back into the array; split on ;
+        String messageString = "";
+        for (String messageBit : argArray) messageString += (messageBit + " ");
+        messageString = messageString.trim();
+        argArray = messageString.split(";");
 
         // Load the rest of the args in the array into a List for safer access
         List<String> argsList = new ArrayList<>(Arrays.asList(argArray));
         argsList.remove(0); // Remove the command
 
         // Instead of delegating the work to a switch, automatically do it via calling the mapping if it exists
-
         if(commandMap.containsKey(commandStr))
             commandMap.get(commandStr).runCommand(event, argsList);
 

@@ -8,12 +8,20 @@ import java.util.List;
 
 public class CreateEventCommand implements ICommand {
     public void runCommand(MessageReceivedEvent event, List<String> args) {
-        // TODO: Parse arguments for title, description, time.
-
+        // Parse arguments for title, description, time.
+        // If parse is incorrect, print indication of correct message format
+        if (args.size() != 2) {
+            event.getMessage().reply("Please format your message: /createEvent 'Event Title'; 'event description';" +
+                    " 04/18/2018 21:35\n Your message was: " + event.getMessage());
+        }
+        // TODO: trim event pieces and check for empty strings.
         // TODO: If parse is correct, save into an event. Print confirmation to channel
-
-        // TODO: If parse is incorrect, print indication of correct message format
-
+        else {
+            event.getMessage().reply("Proper event received! Events cannot currently save...");
+            // TODO: check that time is properly formatted
+            // TODO: create event object
+            // TODO: add event object to event array list
+        }
 
         /*EmbedBuilder builder = new EmbedBuilder();
 
