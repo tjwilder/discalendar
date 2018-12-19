@@ -1,4 +1,4 @@
-package com.github.decyg;
+package com.github.khalory;
 
 public class Event {
     final String TITLE;
@@ -15,5 +15,13 @@ public class Event {
 
 	public String toString() {
 		return String.format("(%s, %s, %s)", TITLE, DESCRIPTION, TIME);
+	}
+
+	public boolean equals(Object o) {
+		Event e = (Event) o;
+
+		return TITLE.equals(e.TITLE)
+			&& DESCRIPTION.equals(e.DESCRIPTION)
+			&& TIME.equals(e.TIME);
 	}
 }

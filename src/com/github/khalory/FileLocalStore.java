@@ -1,15 +1,17 @@
-package com.github.decyg;
+package com.github.khalory;
 
-import sx.blah.discord.handle.obj.IChannel;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.NoSuchFileException;
+
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -18,9 +20,19 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class FileLocalStore implements IDataStore {
-    private static final String FILE_NAME = "data/data.json";
-    private static final String SECONDARY_FILE_NAME = "data/backup_data.json";
+    private static final String DEFAULT_FILE_NAME = "data/data.json";
+	
+	private final String FILE_NAME;
 
+	public FileLocalStore() {
+		this(DEFAULT_FILE_NAME);
+	}
+
+	public FileLocalStore(String fileName) {
+		FILE_NAME = fileName;
+	}
+
+	// Suppress warnings for generic HashMap and ArrayList
     @SuppressWarnings("unchecked")
     public void saveData(ArrayList<Event> eventList) {
 		if (!backupData()) {
@@ -44,7 +56,9 @@ public class FileLocalStore implements IDataStore {
             obj.put("events", data);
 
 			file.write(obj.toJSONString());
-			System.out.println("Saved events");
+			if (MainRunner.DEBUG) {
+				BotUtils.log("Saved events");
+			}
         }
         catch (IOException e) {
             String errorLog = "";
@@ -56,8 +70,11 @@ public class FileLocalStore implements IDataStore {
 	private boolean backupData() {
 		try {
 			Path source = Paths.get(FILE_NAME);
-			Path newDir = Paths.get(SECONDARY_FILE_NAME);
-			Files.move(source, newDir);// Replace existing backup
+			Path newDir = Paths.get(getBackupFileName());
+			Files.move(source, newDir, StandardCopyOption.REPLACE_EXISTING); // Replace existing backup
+		}
+		catch (NoSuchFileException e) {
+			return true; // If original file doesn't exist, ignore the backup
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -96,4 +113,12 @@ public class FileLocalStore implements IDataStore {
 
         return events;
     }
+
+	public String getFileName() {
+		return FILE_NAME;
+	}
+
+	public String getBackupFileName() {
+		return FILE_NAME + ".bak";
+	}
 }

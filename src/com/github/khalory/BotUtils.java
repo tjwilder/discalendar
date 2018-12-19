@@ -1,4 +1,4 @@
-package com.github.decyg;
+package com.github.khalory;
 
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
@@ -40,6 +40,11 @@ class BotUtils {
         });
 
     }
+
+	protected static void debug(String message) {
+		if (MainRunner.DEBUG)
+			log(message);
+	}
 
     protected static void log(String message, Exception e) {
         message += e.getMessage() + "\nStack trace:";

@@ -1,21 +1,50 @@
 plugins {
-  id 'java'
+	id 'java'
 }
 
 repositories {
-  mavenCentral()
-  jcenter()
+	mavenCentral()
+	jcenter()
 }
 
 dependencies {
-  compile group: 'com.discord4j', name: 'Discord4J', version: '2.10.1'
-  compile "com.googlecode.json-simple:json-simple:1.1.1"
+	compile group: 'com.discord4j', name: 'Discord4J', version: '2.10.1'
+	compile "com.googlecode.json-simple:json-simple:1.1.1"
+
+}
+
+sourceSets.all { set ->
+	def jarTask = task("${set.name}Jar", type: Jar) {
+		baseName += "-$set.name"
+		from set.output
+	}
+	
+	artifacts { archives jarTask }
+}
+
+jar {
+	from sourceSets.main.output
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src'
+		}
+		output.resourcesDir = file('build')
+		java.outputDir = file('build')
+	}
 }
 
 task execute(type:JavaExec) {
-  if (project.hasProperty("cargs")) {
-    args Eval.me(cargs)
-  }
-  main = "com.github.decyg.MainRunner"
-  classpath = sourceSets.main.runtimeClasspath
+	if (project.hasProperty("cargs")) {
+		args Eval.me(cargs)
+	}
+	main = "com.github.khalory.MainRunner"
+	classpath = sourceSets.main.runtimeClasspath
+}
+
+task runTests(type:JavaExec) {
+	main = "com.github.khalory.Test"
+	classpath = sourceSets.main.runtimeClasspath
 }

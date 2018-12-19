@@ -14,3 +14,7 @@ It's built using gradle, so make sure you have that installed. You'll need to cr
 To run it a lot, you should do:
 `cp exec-example exec`
 And fill in the code there. Then you can just run `./exec`
+
+## Running tests
+Until proper tests are implemented, you can run basic tests by using another gradle task which runs the tests in the Test.java file. The command should look something like:
+`gradle runTests`
