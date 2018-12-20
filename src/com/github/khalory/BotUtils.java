@@ -9,14 +9,13 @@ import sx.blah.discord.util.RequestBuffer;
 /**
  * Created by declan on 03/04/2017.
  */
-class BotUtils {
+public class BotUtils {
 
     // Constants for use throughout the bot
-    static String BOT_PREFIX = "/";
+    public static final String BOT_PREFIX = "/";
 
     // Handles the creation and getting of a IDiscordClient object for a token
-    protected static IDiscordClient getBuiltDiscordClient(String token){
-
+    protected static IDiscordClient getBuiltDiscordClient(String token) {
         // The ClientBuilder object is where you will attach your params for configuring the instance of your bot.
         // Such as withToken, setDaemon etc
         return new ClientBuilder()
@@ -27,9 +26,8 @@ class BotUtils {
     }
 
     // Helper functions to make certain aspects of the bot easier to use.
-    protected static void sendMessage(IChannel channel, String message){
-
-        // This might look weird but it'll be explained in another page.
+    protected static void sendMessage(IChannel channel, String message) {
+        // Buffer a message request
         RequestBuffer.request(() -> {
             try{
                 channel.sendMessage(message);
@@ -41,26 +39,9 @@ class BotUtils {
 
     }
 
-	protected static void debug(String message) {
-		if (MainRunner.DEBUG)
-			log(message);
-	}
-
-    protected static void log(String message, Exception e) {
-        message += e.getMessage() + "\nStack trace:";
-        for (StackTraceElement stackPiece : e.getStackTrace()) {
-            message += "\n" + stackPiece.toString();
-        }
-        log(message);
-    }
-
-    protected static void log(String message) {
-        if (!MainRunner.DEBUG) {
-            IChannel channel = MainRunner.client.getChannelByID(392512963916857347L);
-            sendMessage(channel, message);
-        }
-        else {
-            System.err.println(message);
-        }
+	// Reports some message to the  Discord channel of the bot creator
+    protected static void report(String message) {
+		IChannel channel = MainRunner.client.getChannelByID(392512963916857347L);
+		sendMessage(channel, message);
     }
 }

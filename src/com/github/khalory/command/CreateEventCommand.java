@@ -1,4 +1,4 @@
-package com.github.khalory;
+package com.github.khalory.command;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.EmbedBuilder;

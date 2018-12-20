@@ -28,6 +28,6 @@ hs_err_pid*
 # File with private discord API key
 exec
 
-# Data
+# Data folder for FileLocalStore
 data/*
 !data/.keep

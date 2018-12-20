@@ -1,8 +1,8 @@
 package com.github.khalory;
 
-import sx.blah.discord.api.IDiscordClient;
+import com.github.khalory.command.CommandHandler;
 
-import java.util.ArrayList;
+import sx.blah.discord.api.IDiscordClient;
 
 /**
  * Created by declan on 03/04/2017.

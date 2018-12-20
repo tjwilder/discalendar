@@ -36,7 +36,7 @@ public class FileLocalStore implements IDataStore {
     @SuppressWarnings("unchecked")
     public void saveData(ArrayList<Event> eventList) {
 		if (!backupData()) {
-			BotUtils.log("Data backup failed, aborting saveData");
+			Logger.error("Data backup failed, aborting saveData");
 			return;
 		}
 
@@ -56,14 +56,12 @@ public class FileLocalStore implements IDataStore {
             obj.put("events", data);
 
 			file.write(obj.toJSONString());
-			if (MainRunner.DEBUG) {
-				BotUtils.log("Saved events");
-			}
+			Logger.debug("Saved events");
         }
         catch (IOException e) {
             String errorLog = "";
             errorLog += "ERROR: Discalendar failed to save calendar data to local storage with Exception\n";
-            BotUtils.log(errorLog, e);
+            Logger.error(errorLog, e);
         }
     }
 
@@ -104,11 +102,12 @@ public class FileLocalStore implements IDataStore {
 				events.add(event);
 			}
 		} catch (FileNotFoundException e) {
-            e.printStackTrace();
+			// This will happen the first time the server is launched
+			Logger.info("FileLocalStore could not find file: " + FILE_NAME);
         } catch (IOException e) {
-            e.printStackTrace();
+			Logger.error("FileLocalStore got error for file: " + FILE_NAME, e);
         } catch (ParseException e) {
-            e.printStackTrace();
+			Logger.error("FileLocalStore could not parse: " + FILE_NAME, e);
         }
 
         return events;
