@@ -1,7 +1,10 @@
 package com.github.khalory;
 
+import com.github.khalory.command.CreateEventCommand;
+
 import sx.blah.discord.api.IDiscordClient;
 
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -75,6 +78,16 @@ public class Test {
 			System.err.println("Loaded event list did not have the same number of elements"
 					+ " as the original");
 		}
+
+
+		
+		CreateEventCommand command = new CreateEventCommand();
+		List<String> commandArgs = new ArrayList<String>();
+		commandArgs.add("Tittle");
+		commandArgs.add("Decruption");
+		commandArgs.add("5-28:30/4:61");
+		// Should print out the correct date
+		command.runCommand(null, commandArgs);
     }
 
 }
