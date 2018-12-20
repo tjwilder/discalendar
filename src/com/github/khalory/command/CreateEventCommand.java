@@ -60,41 +60,19 @@ public class CreateEventCommand implements ICommand {
 		// TODO: Add Event to EventHandler
 		
 		// TODO: Acknowledge receipt in Discord
-
-        /*EmbedBuilder builder = new EmbedBuilder();
-
-        builder.appendField("fieldTitleInline", "fieldContentInline", true);
-        builder.appendField("fieldTitleInline2", "fieldContentInline2", true);
-        builder.appendField("fieldTitleNotInline", "fieldContentNotInline", false);
-        builder.appendField(":tada: fieldWithCoolThings :tada:", "[hiddenLink](http://i.imgur.com/Y9utuDe.png)", false);
-
-        builder.withAuthorName("authorName");
-        builder.withAuthorIcon("http://i.imgur.com/PB0Soqj.png");
-        builder.withAuthorUrl("http://i.imgur.com/oPvYFj3.png");
-
-        builder.withColor(255, 0, 0);
-        builder.withDesc("withDesc");
-        builder.withDescription("withDescription");
-        builder.withTitle("withTitle");
-        builder.withTimestamp(100);
-        builder.withUrl("http://i.imgur.com/IrEVKQq.png");
-        builder.withImage("http://i.imgur.com/agsp5Re.png");
-
-        builder.withFooterIcon("http://i.imgur.com/Ch0wy1e.png");
-        builder.withFooterText("footerText");
-        builder.withFooterIcon("http://i.imgur.com/TELh8OT.png");
-        builder.withThumbnail("http://www.gstatic.com/webp/gallery/1.webp");
-
-        builder.appendDesc(" + appendDesc");
-        builder.appendDescription(" + appendDescription");
-
-        RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));*/
-
+		messageEvent.getMessage().reply("Proper event received! Events cannot currently save...");
     }
 
 	private void getHelp(MessageReceivedEvent messageEvent) {
-		List<String> helpArgs = new ArrayList<>();
-		helpArgs.add("createEvent");
-		(new HelpCommand()).runCommand(messageEvent, helpArgs);
+		// Another option
+		messageEvent.getMessage().reply("Please format your message: /createEvent 'Event Title'; 'event description';" +
+				" 04/18/2018 21:35\n Your message was: " + messageEvent.getMessage());
+        // TODO: trim event pieces and check for empty strings.
+        // TODO: If parse is correct, save into an event. Print confirmation to channel
+
+		// Also send the help message?
+		// List<String> helpArgs = new ArrayList<>();
+		// helpArgs.add("createEvent");
+		// (new HelpCommand()).runCommand(messageEvent, helpArgs);
 	}
 }

@@ -31,3 +31,6 @@ exec
 # Data folder for FileLocalStore
 data/*
 !data/.keep
+
+# Vim swap file
+# *.swp
