@@ -19,14 +19,14 @@ public class Test {
     public static void main(String[] args) {
 		// Test Event.java
 		String debugTitle = "basicTitle";
-		String debugDesscription = "extra Long Description";
+		String debugDescription = "extra Long Description";
 		String debugTime = "8767896";
-		Event testEvent = new Event(debugTitle, debugDesscription, debugTime);
+		Event testEvent = new Event(debugTitle, debugDescription, debugTime);
 
 		// Test Constructor
 		if (!testEvent.getTitle().equals(debugTitle))
 			System.err.println("Title is not saved and loaded properly by Event");
-		if (!testEvent.getDescription().equals(debugDesscription))
+		if (!testEvent.getDescription().equals(debugDescription))
 			System.err.println("Description is not saved and loaded properly by Event");
 		if (!testEvent.getTime().equals(debugTime))
 			System.err.println("Time is not saved and loaded properly by Event");
