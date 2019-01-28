@@ -74,11 +74,11 @@ public class CommandHandler {
             return;
 
         // Check if the first arg (the command) starts with the prefix defined in the utils class
-        if(!argArray[0].startsWith(BotUtils.botPrefix))
+        if(!argArray[0].startsWith(BotUtils.BOT_PREFIX))
             return;
 
         // Extract the "command" part of the first arg out by ditching the amount of characters present in the prefix
-        String commandStr = argArray[0].substring(BotUtils.botPrefix.length()).toLowerCase();
+        String commandStr = argArray[0].substring(BotUtils.BOT_PREFIX.length()).toLowerCase();
 
         // Add spaces back into the array; split on ;
         String messageString = "";
