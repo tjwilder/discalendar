@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class CreateEventCommand implements ICommand {
     public void runCommand(MessageReceivedEvent messageEvent, List<String> args) {
-        // TODO: Parse arguments for title, description, time.
 
         // TODO: If parse is correct, save into an event. Print confirmation to channel
 
@@ -24,19 +23,25 @@ public class CreateEventCommand implements ICommand {
 		// If the args aren't correct, pretend the user entered the help command for createEvent
 		if (args.size() != 3) {
 			getHelp(messageEvent);
+//			System.out.println("fail at line 26"); // for testing
+//			for (String itemized : args) {
+//				System.out.println(itemized);
+//			}
 			return;
 		}
 
 		// Presumably the arguments at this point are exactly [title, description, time]
-		String title       = args.get(0);
-		String description = args.get(1);
-		String timeString  = args.get(2);
+		String title       = args.get(0).trim();
+//		System.out.println(title); // for testing
+		String description = args.get(1).trim();
+		String timeString  = args.get(2).trim();
 
-		// The title and description are fine as-is, but we need to parse the
-		// timeString properly. It must be like 12-25-19-23:59
-		String[] regexSplit = timeString.split("[:/-]");
+		// The title and description can be any string, but we need to parse the
+		// timeString properly. It must be like 02-25-19-23:59
+		String[] regexSplit = timeString.split("[:/ .-]");
 		if (regexSplit.length != 5) {
 			getHelp(messageEvent);
+//			System.out.println("Failure on line 43. Problematic section: " + timeString);
 			return;
 		}
 		timeString = String.join("-", regexSplit);
@@ -44,21 +49,20 @@ public class CreateEventCommand implements ICommand {
 		Date date = null;
 
 		try {
-			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yy-hh-mm");
+			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy-hh-mm");
 			date = dateFormat.parse(timeString);
 		}
 		catch (Exception e) {
-			Logger.debug("Failed to parse with exception", e);
+			Logger.debug("Failed to parse event date with exception", e);
 			getHelp(messageEvent);
 			return;
 		}
 		
 		String time = date.toString(); // parsed time string
 
-		Event event = new Event(title, description, time);	
+		Event event = new Event(title, description, time); // TODO: add server ID as part of event data.
 		Logger.info("Created event " + event.toString());
 		// TODO: Add Event to EventHandler
-		
 		// TODO: Acknowledge receipt in Discord
 		messageEvent.getMessage().reply("Proper event received! Events cannot currently save...");
     }
