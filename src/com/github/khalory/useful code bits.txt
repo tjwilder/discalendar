@@ -1,0 +1,5 @@
+Record obscure but important method calls here.
+Don't copy and paste chunks of code here. Use this note section to remember where to call things from.
+
+USED FOR GETTING A SERVER ID:     messageEvent.getGuild().getLongID();
+  ---( returns Long number )---

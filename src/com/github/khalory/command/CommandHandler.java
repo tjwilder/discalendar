@@ -56,6 +56,7 @@ public class CommandHandler {
         commandMap.put("listevents", new ListEventsCommand());
         commandMap.put("deleteevent", new DeleteEventCommand());
         commandMap.put("help", new HelpCommand());
+        // TODO: Add a "change prefix" command.
     }
 
     @EventSubscriber
@@ -63,8 +64,9 @@ public class CommandHandler {
 
         // Note for error handling, you'll probably want to log failed commands with a logger or sout
         // In most cases it's not advised to annoy the user with a reply in case they didn't intend to trigger a
-        // command anyway, such as a user typing ?notacommand, the bot should not say "notacommand" doesn't exist in
+        // command anyway, such as a user typing ?notacommand, the bot should not say "notacommand doesn't exist" in
         // most situations. It's partially good practice and partially developer preference
+        // NOTE: In Discalendar's case, we are not logging mis-inputted commands.
 
         // Given a message "/test arg1 arg2", argArray will contain ["/test", "arg1", "arg"]
         String[] argArray = event.getMessage().getContent().split(" ");
@@ -80,7 +82,7 @@ public class CommandHandler {
         // Extract the "command" part of the first arg out by ditching the amount of characters present in the prefix
         String commandStr = argArray[0].substring(BotUtils.BOT_PREFIX.length()).toLowerCase();
 
-        // Add spaces back into the array; split on ;
+        // Add spaces back into the array. Split on ;
         String messageString = "";
         for (String messageBit : argArray) messageString += (messageBit + " ");
         messageString = messageString.trim();
@@ -88,7 +90,13 @@ public class CommandHandler {
 
         // Load the rest of the args in the array into a List for safer access
         List<String> argsList = new ArrayList<>(Arrays.asList(argArray));
-        argsList.remove(0); // Remove the command
+        // Remove the command without removing the first part of the data
+        String removeCommand = argsList.get(0);
+        removeCommand = removeCommand.substring(BotUtils.BOT_PREFIX.length() + commandStr.length());
+        // TODO: The above line will throw an exception if the command key is "createeventabd" instead of
+        //  "createevent abd". I don't know how to fix this because I can't get the key from the map. Any help would be
+        //  appreciated. Right now, the system will continue to run after encountering this error.
+        argsList.set(0, removeCommand);
 
         // Instead of delegating the work to a switch, automatically do it via calling the mapping if it exists
         if(commandMap.containsKey(commandStr))
