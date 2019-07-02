@@ -4,18 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/src/com/github/khalory/command/CommandHandler.java" line="68" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ade7dc4e-bde4-4ab5-9f50-736233317c66" name="Default Changelist" comment="Didn't change much, mostly looked at what needs to be done.&#10;Fixed an incorrect variable name for the bot prefix.">
-      <change afterPath="$PROJECT_DIR$/.idea/fileColors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/github/khalory/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/github/khalory/command/EventHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/github/khalory/command/ServerHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/github/khalory/useful code bits.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/github/khalory/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/khalory/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/github/khalory/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/khalory/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/github/khalory/command/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/khalory/command/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/github/khalory/command/CreateEventCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/khalory/command/CreateEventCommand.java" afterDir="false" />
+    <list default="true" id="ade7dc4e-bde4-4ab5-9f50-736233317c66" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/github/khalory/FileLocalStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/khalory/FileLocalStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/github/khalory/command/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/khalory/command/EventHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -102,13 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/CreateEventCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="817">
-              <caret line="65" column="42" lean-forward="true" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
-              <folding>
-                <element signature="e#1582#1731#1" />
-                <element signature="e#1826#1964#0" />
-                <element signature="e#1993#2133#0" />
-              </folding>
+            <state relative-caret-position="133">
+              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -116,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/github/khalory/Event.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+            <state relative-caret-position="304">
+              <caret line="16" column="51" lean-forward="true" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -126,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/github/khalory/MainRunner.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
-              <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+              <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -135,7 +122,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/CommandHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
-              <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+              <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
               <folding>
                 <element signature="e#758#2240#0" />
               </folding>
@@ -155,17 +142,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/github/khalory/FileLocalStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
+            <state relative-caret-position="190">
+              <caret line="36" column="54" lean-forward="true" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
+              <folding>
+                <element signature="e#3537#3538#0" expanded="true" />
+                <element signature="e#3569#3570#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/EventHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="190">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#308#309#0" expanded="true" />
+                <element signature="e#337#338#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -174,20 +169,16 @@
         <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/ServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="57">
-              <caret line="3" column="52" lean-forward="true" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
+              <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/github/khalory/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="72" lean-forward="true" selection-start-line="2" selection-start-column="72" selection-end-line="2" selection-end-column="72" />
-              <folding>
-                <element signature="e#163#164#0" expanded="true" />
-                <element signature="e#199#200#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="304">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -240,11 +231,12 @@
         <option value="$PROJECT_DIR$/src/com/github/khalory/command/CommandHandler.java" />
         <option value="$PROJECT_DIR$/src/com/github/khalory/command/CreateEventCommand.java" />
         <option value="$PROJECT_DIR$/src/com/github/khalory/MainRunner.java" />
-        <option value="$PROJECT_DIR$/src/com/github/khalory/command/EventHandler.java" />
         <option value="$PROJECT_DIR$/src/com/github/khalory/useful code bits.txt" />
         <option value="$PROJECT_DIR$/src/com/github/khalory/command/ServerHandler.java" />
-        <option value="$PROJECT_DIR$/src/com/github/khalory/Event.java" />
         <option value="$PROJECT_DIR$/src/com/github/khalory/Server.java" />
+        <option value="$PROJECT_DIR$/src/com/github/khalory/Event.java" />
+        <option value="$PROJECT_DIR$/src/com/github/khalory/FileLocalStore.java" />
+        <option value="$PROJECT_DIR$/src/com/github/khalory/command/EventHandler.java" />
       </list>
     </option>
   </component>
@@ -265,7 +257,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -273,6 +264,11 @@
             <path>
               <item name="Discalendar" type="b2602c69:ProjectViewProjectNode" />
               <item name="Discalendar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Discalendar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Discalendar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Discalendar" type="b2602c69:ProjectViewProjectNode" />
@@ -296,9 +292,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -474,7 +475,28 @@
       <option name="project" value="LOCAL" />
       <updated>1560117498336</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added the Server.java file. Got distracted and tired, so really didn't work much.&#10;&#10;We now have a place to leave useful code bits.">
+      <created>1561955563181</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1561955563181</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added a bunch of stuff. Forgot that I'd needed to have the full directory stack selected while committing.">
+      <created>1561955651531</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1561955651532</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added a bunch of stuff. Forgot that I'd needed to have the full directory stack selected while committing.">
+      <created>1561955674561</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1561955674561</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -488,7 +510,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1208" y="-8" width="1216" height="1855" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="top" id="TODO" order="0" sideWeight="0.49913496" side_tool="true" weight="0.32117647" />
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -502,13 +523,13 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.67387545" weight="0.09882353" />
+      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.56920415" weight="0.26647058" />
       <window_info anchor="bottom" id="Inspection Results" order="7" sideWeight="0.49832326" weight="0.3286119" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49966466" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50416666" side_tool="true" weight="0.2488532" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50605536" side_tool="true" visible="true" weight="0.25470588" />
       <window_info anchor="bottom" id="Build" order="10" sideWeight="0.5103957" weight="0.45750707" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4963112" visible="true" weight="0.3281471" />
-      <window_info anchor="bottom" content_ui="combo" id="Project" order="12" sideWeight="0.49583334" visible="true" weight="0.25470588" />
+      <window_info active="true" anchor="bottom" content_ui="combo" id="Project" order="12" sideWeight="0.49394464" visible="true" weight="0.25470588" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -571,7 +592,9 @@
     <MESSAGE value="I was going to work on this today but my right wrist is killing me.&#10;This commit fixes a typo, that's it for now." />
     <MESSAGE value="Didn't change much, mostly looked at what needs to be done.&#10;Fixed an incorrect variable name for the bot prefix." />
     <MESSAGE value="Looked around at system, fixed and made note of  bugs relating to message parsing and event creation. Next up: storing an event to the event handler." />
-    <option name="LAST_COMMIT_MESSAGE" value="Looked around at system, fixed and made note of  bugs relating to message parsing and event creation. Next up: storing an event to the event handler." />
+    <MESSAGE value="Added the Server.java file. Got distracted and tired, so really didn't work much.&#10;&#10;We now have a place to leave useful code bits." />
+    <MESSAGE value="Added a bunch of stuff. Forgot that I'd needed to have the full directory stack selected while committing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a bunch of stuff. Forgot that I'd needed to have the full directory stack selected while committing." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/.name" />
@@ -695,39 +718,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/useful code bits.txt">
+    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/MainRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/CreateEventCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="65" column="42" lean-forward="true" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
-          <folding>
-            <element signature="e#1582#1731#1" />
-            <element signature="e#1826#1964#0" />
-            <element signature="e#1993#2133#0" />
-          </folding>
+        <state relative-caret-position="399">
+          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/CommandHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
           <folding>
             <element signature="e#758#2240#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/FileLocalStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -738,41 +742,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/ServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="52" lean-forward="true" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/EventHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/useful code bits.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/MainRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/github/khalory/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="72" lean-forward="true" selection-start-line="2" selection-start-column="72" selection-end-line="2" selection-end-column="72" />
+        <state relative-caret-position="304">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/CreateEventCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/ServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="51" lean-forward="true" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/FileLocalStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="36" column="54" lean-forward="true" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
           <folding>
-            <element signature="e#163#164#0" expanded="true" />
-            <element signature="e#199#200#0" expanded="true" />
+            <element signature="e#3537#3538#0" expanded="true" />
+            <element signature="e#3569#3570#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/github/khalory/command/EventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#308#309#0" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
           </folding>
         </state>
       </provider>

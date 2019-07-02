@@ -50,6 +50,7 @@ public class FileLocalStore implements IDataStore {
                 eventObj.put("title", event.getTitle());
                 eventObj.put("description", event.getDescription());
                 eventObj.put("timestamp", event.getTime());
+                eventObj.put("serverID", event.getServerID());
                 data.add(eventObj);
             }
 
@@ -97,8 +98,9 @@ public class FileLocalStore implements IDataStore {
 				String name = (String) e.get("title");
 				String description = (String) e.get("description");
 				String timestamp = (String) e.get("timestamp");
+				Long serverID = (Long) e.get("serverID");
 
-				Event event = new Event(name, description, timestamp);
+				Event event = new Event(name, description, timestamp, serverID);
 				events.add(event);
 			}
 		} catch (FileNotFoundException e) {
