@@ -26,7 +26,7 @@ public class BotUtils {
     }
 
     // Helper functions to make certain aspects of the bot easier to use.
-    protected static void sendMessage(IChannel channel, String message) {
+    public static void sendMessage(IChannel channel, String message) {
         // Buffer a message request
         RequestBuffer.request(() -> {
             try{

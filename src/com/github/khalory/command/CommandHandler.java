@@ -56,6 +56,7 @@ public class CommandHandler {
         commandMap.put("listevents", new ListEventsCommand());
         commandMap.put("deleteevent", new DeleteEventCommand());
         commandMap.put("help", new HelpCommand());
+        commandMap.put("changeprefix", new ChangePrefixCommand());
         // TODO: Add a "change prefix" command.
     }
 

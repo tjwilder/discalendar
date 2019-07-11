@@ -1,29 +1,25 @@
 package com.github.khalory.command;
 
 import com.github.khalory.Event;
+import com.github.khalory.EventHandler;
 import com.github.khalory.Logger;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
-import sx.blah.discord.util.EmbedBuilder;
-import sx.blah.discord.util.RequestBuffer;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.ArrayList;
 
 public class CreateEventCommand implements ICommand {
     public void runCommand(MessageReceivedEvent messageEvent, List<String> args) {
 
         // TODO: If parse is correct, save into an event. Print confirmation to channel
 
-        // TODO: If parse is incorrect, print indication of correct message format
-
         // If the args aren't correct, pretend the user entered the help command for createEvent
         if (args.size() != 3) {
             getHelp(messageEvent);
-//			System.out.println("fail at line 26"); // for testing
+//			System.out.println("fail at line 24"); // for testing
 //			for (String itemized : args) {
 //				System.out.println(itemized);
 //			}
@@ -37,11 +33,11 @@ public class CreateEventCommand implements ICommand {
         String timeString = args.get(2).trim();
 
         // The title and description can be any string, but we need to parse the
-        // timeString properly. It must be like 02-25-19-23:59
+        // timeString properly. It must be like mm-dd-yyyy-hh:mm
         String[] regexSplit = timeString.split("[:/ .-]");
         if (regexSplit.length != 5) {
             getHelp(messageEvent);
-//			System.out.println("Failure on line 43. Problematic section: " + timeString);
+//			System.out.println("Failure on line 42. Problematic section: " + timeString);
             return;
         }
         timeString = String.join("-", regexSplit);
@@ -63,9 +59,11 @@ public class CreateEventCommand implements ICommand {
 
         Event event = new Event(title, description, time, serverID);
         Logger.info("Created event " + event.toString());
-        // TODO: Add Event to EventHandler
-        // TODO: Acknowledge receipt in Discord
-        messageEvent.getMessage().reply("Proper event received! Events cannot currently save...");
+        // Add Event to EventHandler
+        EventHandler.addEvent(event);
+        // Acknowledge receipt in Discord
+        // TODO: update text when messages can send, report number of dayus, hours, minutes until message will send.
+        messageEvent.getMessage().reply("Event saved! The bot cannot currently post events, only receive them.");
     }
 
     // TODO: trim event pieces and check for empty strings.

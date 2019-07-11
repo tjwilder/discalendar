@@ -21,7 +21,8 @@ public class Test {
 		String debugTitle = "basicTitle";
 		String debugDescription = "extra Long Description";
 		String debugTime = "8767896";
-		Event testEvent = new Event(debugTitle, debugDescription, debugTime);
+		Long debugID = 431291597531597534L;
+		Event testEvent = new Event(debugTitle, debugDescription, debugTime, debugID);
 
 		// Test Constructor
 		if (!testEvent.getTitle().equals(debugTitle))
@@ -30,11 +31,13 @@ public class Test {
 			System.err.println("Description is not saved and loaded properly by Event");
 		if (!testEvent.getTime().equals(debugTime))
 			System.err.println("Time is not saved and loaded properly by Event");
+		if (!testEvent.getServerID().equals(debugID))
+			System.err.println("Server ID is not saved and loaded properly by Event");
 
 		// Create a list of events to save into the data file
 		ArrayList<Event> eventList = new ArrayList<>();
-		for (int i = 0; i < 15; i++) {
-			Event thisEvent = new Event("title" + i, "description" + i, "time" + i);
+		for (long i = 0; i < 15; i++) {
+			Event thisEvent = new Event("title" + i, "description" + i, "time" + i, 159753123456789987L + i);
 			eventList.add(thisEvent);
 		}
 		IDataStore storageTest = new FileLocalStore("data/dummy.json");

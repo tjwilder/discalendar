@@ -1,16 +1,16 @@
 package com.github.khalory;
 
-  // Basic storage form that needs to be different unique from server to server
+  // Basic storage for info that might be different based on a server's layout and whims
 
 public class Server {
-    final Long SERVER_ID;
+    Long serverID;
     String serverPrefix;
     Long announcementChannel;
-    public Server(long serverID){
-        SERVER_ID = serverID;
+    public Server(long newServerID){
+        serverID = newServerID;
     }
 
-    public Long getID() { return SERVER_ID; }
+    public Long getID() { return serverID; }
     public String getPrefix() { return serverPrefix; }
     public Long getAnnouncementChannel() { return announcementChannel; }
 

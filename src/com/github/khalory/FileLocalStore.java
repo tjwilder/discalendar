@@ -19,6 +19,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+ // TODO: add methods for retrieving Server data.
 public class FileLocalStore implements IDataStore {
     private static final String DEFAULT_FILE_NAME = "data/data.json";
 	

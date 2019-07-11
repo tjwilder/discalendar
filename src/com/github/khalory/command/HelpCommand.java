@@ -9,4 +9,11 @@ public class HelpCommand implements ICommand {
         // TODO: Print out the help menu.
 
     }
+    private static void helpMessage(String request) {
+
+
+    }
+    public static void prefixHelpMessage(MessageReceivedEvent wrongText) {
+
+    }
 }
