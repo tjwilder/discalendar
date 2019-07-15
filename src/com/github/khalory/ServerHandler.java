@@ -14,15 +14,14 @@ import java.util.ArrayList;
 public class ServerHandler {
 
     static ArrayList<com.github.khalory.Server> allServers = new ArrayList();
-    //Servers can be stored in a list for now. A binary search tree would be faster, but is unnecessary at this scale.
+    //Servers can be stored in a list for now. A binary search tree would be better.
 
     public static void serverStartup() {
 
         // TODO: Bot start: Load server information from LocalFileStore into allServers array list.
-        //
     }
 
-
+    // TODO: completely untested method.
     public static void changePrefix(Long serverID, String newPrefix) {
         for (int i = 1; i <= allServers.size(); i++) {
             Server currentServer = allServers.get(i);
@@ -34,4 +33,14 @@ public class ServerHandler {
         }
     }
 
+    // TODO: only tested with empty arrarylist.
+    public static String checkPrefix(Long serverID) {
+        for (int i = 1; i <= allServers.size(); i++) {
+            Server currentServer = allServers.get(i);
+            if (currentServer.getID().equals(serverID)) {
+                return currentServer.getPrefix();
+            }
+        }
+        return BotUtils.BOT_PREFIX;
+    }
 }

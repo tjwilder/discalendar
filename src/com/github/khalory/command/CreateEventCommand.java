@@ -14,30 +14,27 @@ import java.util.List;
 public class CreateEventCommand implements ICommand {
     public void runCommand(MessageReceivedEvent messageEvent, List<String> args) {
 
-        // TODO: If parse is correct, save into an event. Print confirmation to channel
+        // If parse is correct, save into an event. Print confirmation to channel
 
         // If the args aren't correct, pretend the user entered the help command for createEvent
         if (args.size() != 3) {
             getHelp(messageEvent);
-//			System.out.println("fail at line 24"); // for testing
-//			for (String itemized : args) {
-//				System.out.println(itemized);
-//			}
+            // TODO: update this to use HelpCommand instead of an internal method.
             return;
         }
 
         // Presumably the arguments at this point are exactly [title, description, time]
+        // TODO: trim event pieces and check for empty strings.
         String title = args.get(0).trim();
-//		System.out.println(title); // for testing
         String description = args.get(1).trim();
         String timeString = args.get(2).trim();
 
+
         // The title and description can be any string, but we need to parse the
-        // timeString properly. It must be like mm-dd-yyyy-hh:mm
+        // timeString properly. It must be like mm/dd/yyyy-hh:mm
         String[] regexSplit = timeString.split("[:/ .-]");
         if (regexSplit.length != 5) {
             getHelp(messageEvent);
-//			System.out.println("Failure on line 42. Problematic section: " + timeString);
             return;
         }
         timeString = String.join("-", regexSplit);
@@ -62,11 +59,10 @@ public class CreateEventCommand implements ICommand {
         // Add Event to EventHandler
         EventHandler.addEvent(event);
         // Acknowledge receipt in Discord
-        // TODO: update text when messages can send, report number of dayus, hours, minutes until message will send.
+        // TODO: update text when messages can send. Report number of days, hours, minutes until message will send.
         messageEvent.getMessage().reply("Event saved! The bot cannot currently post events, only receive them.");
     }
 
-    // TODO: trim event pieces and check for empty strings.
     // TODO: If parse is correct, save into an event. Print confirmation to channel
 
     private void getHelp(MessageReceivedEvent messageEvent) {

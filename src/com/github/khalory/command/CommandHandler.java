@@ -2,6 +2,7 @@ package com.github.khalory.command;
 
 import com.github.khalory.BotUtils;
 
+import com.github.khalory.ServerHandler;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.EmbedBuilder;
@@ -20,44 +21,11 @@ public class CommandHandler {
     // Statically populate the commandMap with the intended functionality
     // Might be better practise to do this from an instantiated objects constructor
     static {
-        commandMap.put("exampleembed", (event, args) -> {
-
-            EmbedBuilder builder = new EmbedBuilder();
-
-            builder.appendField("fieldTitleInline", "fieldContentInline", true);
-            builder.appendField("fieldTitleInline2", "fieldContentInline2", true);
-            builder.appendField("fieldTitleNotInline", "fieldContentNotInline", false);
-            builder.appendField(":tada: fieldWithCoolThings :tada:", "[hiddenLink](http://i.imgur.com/Y9utuDe.png)", false);
-
-            builder.withAuthorName("authorName");
-            builder.withAuthorIcon("http://i.imgur.com/PB0Soqj.png");
-            builder.withAuthorUrl("http://i.imgur.com/oPvYFj3.png");
-
-            builder.withColor(255, 0, 0);
-            builder.withDesc("withDesc");
-            builder.withDescription("withDescription");
-            builder.withTitle("withTitle");
-            builder.withTimestamp(100);
-            builder.withUrl("http://i.imgur.com/IrEVKQq.png");
-            builder.withImage("http://i.imgur.com/agsp5Re.png");
-
-            builder.withFooterIcon("http://i.imgur.com/Ch0wy1e.png");
-            builder.withFooterText("footerText");
-            builder.withFooterIcon("http://i.imgur.com/TELh8OT.png");
-            builder.withThumbnail("http://www.gstatic.com/webp/gallery/1.webp");
-
-            builder.appendDesc(" + appendDesc");
-            builder.appendDescription(" + appendDescription");
-
-            RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
-
-        });
         commandMap.put("createevent", new CreateEventCommand());
         commandMap.put("listevents", new ListEventsCommand());
         commandMap.put("deleteevent", new DeleteEventCommand());
         commandMap.put("help", new HelpCommand());
         commandMap.put("changeprefix", new ChangePrefixCommand());
-        // TODO: Add a "change prefix" command.
     }
 
     @EventSubscriber
@@ -69,40 +37,39 @@ public class CommandHandler {
         // most situations. It's partially good practice and partially developer preference
         // NOTE: In Discalendar's case, we are not logging mis-inputted commands.
 
+        String serverPrefix = ServerHandler.checkPrefix(event.getGuild().getLongID());
+
         // Given a message "/test arg1 arg2", argArray will contain ["/test", "arg1", "arg"]
         String[] argArray = event.getMessage().getContent().split(" ");
 
         // First ensure at least the command and prefix is present, the arg length can be handled by your command func
-        if(argArray.length == 0)
+        if (argArray.length == 0)
             return;
 
         // Check if the first arg (the command) starts with the prefix defined in the utils class
-        if(!argArray[0].startsWith(BotUtils.BOT_PREFIX))
+        if (!argArray[0].startsWith(serverPrefix))
             return;
 
+
         // Extract the "command" part of the first arg out by ditching the amount of characters present in the prefix
-        String commandStr = argArray[0].substring(BotUtils.BOT_PREFIX.length()).toLowerCase();
+        String commandStr = argArray[0].substring(serverPrefix.length()).toLowerCase();
+        if(commandMap.containsKey(commandStr)) {
+            // Add spaces back into the array. Split on ;
+            String messageString = "";
+            for (String messageBit : argArray) messageString += (messageBit + " ");
+            messageString = messageString.trim();
+            argArray = messageString.split(";");
 
-        // Add spaces back into the array. Split on ;
-        String messageString = "";
-        for (String messageBit : argArray) messageString += (messageBit + " ");
-        messageString = messageString.trim();
-        argArray = messageString.split(";");
+            // Load the rest of the args in the array into a List for safer access
+            List<String> argsList = new ArrayList<>(Arrays.asList(argArray));
+            // Remove the command without removing the first part of the data
+            String removeCommand = argsList.get(0);
+            removeCommand = removeCommand.substring(BotUtils.BOT_PREFIX.length() + commandStr.length());
+            argsList.set(0, removeCommand);
 
-        // Load the rest of the args in the array into a List for safer access
-        List<String> argsList = new ArrayList<>(Arrays.asList(argArray));
-        // Remove the command without removing the first part of the data
-        String removeCommand = argsList.get(0);
-        removeCommand = removeCommand.substring(BotUtils.BOT_PREFIX.length() + commandStr.length());
-        // TODO: The above line will throw an exception if the command key is "createeventabd" instead of
-        //  "createevent abd". I don't know how to fix this because I can't get the key from the map. Any help would be
-        //  appreciated. Right now, the system will continue to run after encountering this error.
-        argsList.set(0, removeCommand);
-
-        // Instead of delegating the work to a switch, automatically do it via calling the mapping if it exists
-        if(commandMap.containsKey(commandStr))
+            // Instead of delegating the work to a switch, automatically do it via calling the mapping if it exists
             commandMap.get(commandStr).runCommand(event, argsList);
-
+        }
     }
 
 }

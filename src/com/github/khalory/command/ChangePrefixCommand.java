@@ -15,11 +15,12 @@ public class ChangePrefixCommand implements ICommand {
             HelpCommand.prefixHelpMessage(messagePrefix);
             return;
         }
-
+        // TODO test
+        System.out.println("fail");
         Long callerID = messagePrefix.getGuild().getLongID();
 
         ServerHandler.changePrefix(callerID, args.get(0).trim());
 
-        BotUtils.sendMessage(messagePrefix.getChannel(), "Prefix has been updated to: " + args.get(0));
+        BotUtils.sendMessage(messagePrefix.getChannel(), "Prefix has been updated to: " + args.get(0).trim());
     }
 }
