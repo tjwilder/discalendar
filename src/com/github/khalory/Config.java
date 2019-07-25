@@ -24,8 +24,7 @@ class Config {
 	}
 
 
-	// TODO: Eventually load config from separate files for
-	// dev, prod, etc.
+	// TODO: Eventually load config from separate files for dev, prod, etc.
 }
 
 // Possible LogLevels, None for no output
