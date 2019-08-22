@@ -34,3 +34,6 @@ data/*
 
 # Vim swap file
 # *.swp
+
+# Intellij editor configuration files
+*.idea
